@@ -13,13 +13,13 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f3f4f6;
+      background-color: #f9fafb;
       color: #333;
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(90deg, #0d0d0d, #1a1a1a);
+      background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
       color: #fff;
       padding: 20px 0;
       text-align: center;
@@ -31,66 +31,89 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 25px;
       padding: 10px 0;
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: color 0.3s ease-in-out;
     }
 
     nav a:hover {
-      color: #00d084;
+      color: #00e6a7;
     }
 
     main {
-      padding: 40px 20px;
+      padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
-    }
-
-    h1, h2 {
       text-align: center;
-      margin-bottom: 30px;
-      color: #111;
     }
 
-    button {
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .shop-now-button button {
       background-color: #00b894;
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 14px 28px;
       font-size: 1rem;
-      border-radius: 25px;
+      border-radius: 30px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s ease-in-out, transform 0.2s;
     }
 
-    button:hover {
+    .shop-now-button button:hover {
       background-color: #009e7e;
-    }
-
-    .shop-now-button {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
+      transform: translateY(-2px);
     }
 
     footer {
-      background-color: #111;
+      background-color: #1a1a1a;
       color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
+      padding: 20px 10px;
+      margin-top: 60px;
+      font-size: 0.95rem;
     }
 
     @media (max-width: 600px) {
       nav ul {
         flex-direction: column;
+        gap: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .shop-now-button button {
+        width: 80%;
+        font-size: 1rem;
       }
     }
   </style>
@@ -109,19 +132,37 @@
   </header>
 
   <main>
-    <section style="text-align: center;">
-      <h2>Welcome to My Online Store</h2>
-      <p style="margin: 20px auto; max-width: 600px;">
-        Explore our amazing collection of products at great prices. Enjoy fast delivery and secure checkout.
-      </p>
-      <a href="products.html" class="shop-now-button">
-        <button>Shop Now</button>
+    <h2>Welcome to My Online Store</h2>
+    <p>
+      Discover top-quality products at unbeatable prices. Enjoy fast delivery, friendly service, and a seamless shopping experience.
+    </p>
+    <div class="shop-now-button">
+      <a href="products.html">
+        <button onclick="shopNowClicked()">Shop Now</button>
       </a>
-    </section>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 My Online Store. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> My Online Store. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Set the current year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple interaction when "Shop Now" is clicked
+    function shopNowClicked() {
+      alert("Redirecting you to the Products page!");
+    }
+
+    // Optional: Greet the user on first visit
+    window.addEventListener("DOMContentLoaded", function() {
+      if (!localStorage.getItem("visited")) {
+        alert("Welcome to My Online Store!");
+        localStorage.setItem("visited", "yes");
+      }
+    });
+  </script>
 </body>
 </html>
